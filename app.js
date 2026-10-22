@@ -198,6 +198,17 @@
       frow.className = "row";
       frow.style.marginBottom = "8px";
       frow.appendChild(ftype);
+
+      const vowel = document.createElement("select");
+      [["", "Vowel: Off"], ["ah", "Vowel: Ah"], ["oh", "Vowel: Oh"], ["oo", "Vowel: Oo"],
+       ["eh", "Vowel: Eh"], ["ee", "Vowel: Ee"]].forEach(([v, n]) => {
+        const o = document.createElement("option");
+        o.value = v; o.textContent = n;
+        vowel.appendChild(o);
+      });
+      vowel.value = (L.formant && L.formant.vowel) || "";
+      vowel.onchange = () => { L.formant = vowel.value ? { vowel: vowel.value } : undefined; };
+      frow.appendChild(vowel);
       div.appendChild(frow);
 
       const g2 = document.createElement("div");

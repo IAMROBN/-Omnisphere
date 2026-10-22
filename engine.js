@@ -16,6 +16,19 @@ const NOTE_NAMES = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", 
 /* Wave names the Web Audio OscillatorNode accepts directly. */
 const OSC_TYPES = new Set(["sine", "square", "sawtooth", "triangle"]);
 
+/*
+ * Male-voice vowel formants: centre frequency (Hz), bandwidth (Hz) and
+ * relative gain for F1-F3. Running a bright, detuned source through these
+ * parallel band-passes is what turns oscillators into a sung vowel.
+ */
+const VOWELS = {
+  ah: [[730, 80, 1.0], [1090, 90, 0.5], [2440, 120, 0.25]],
+  oh: [[570, 70, 1.0], [840, 80, 0.45], [2410, 120, 0.2]],
+  oo: [[300, 60, 1.0], [870, 80, 0.3], [2240, 120, 0.15]],
+  eh: [[530, 70, 1.0], [1840, 100, 0.4], [2480, 120, 0.25]],
+  ee: [[270, 60, 1.0], [2290, 100, 0.3], [3010, 130, 0.25]]
+};
+
 function midiToFreq(midi) {
   return 440 * Math.pow(2, (midi - 69) / 12);
 }
@@ -245,6 +258,36 @@ class OmniWebEngine {
     filter.type = L.filter.type;
     filter.Q.value = clamp(L.filter.q, 0.0001, 24);
 
+    // Sources feed `head`: the filter directly, or a vowel bank in front of it.
+    let head = filter;
+    const vowel = L.formant && VOWELS[L.formant.vowel];
+    if (vowel) {
+      head = ctx.createGain();
+      const sum = ctx.createGain();
+      sum.gain.value = 7; // make-up gain: narrow band-passes lose a lot of level
+      vowel.forEach(([fc, bw, amp]) => {
+        const bp = ctx.createBiquadFilter();
+        bp.type = "bandpass";
+        bp.frequency.value = fc;
+        bp.Q.value = fc / bw;
+        const g = ctx.createGain();
+        g.gain.value = amp;
+        head.connect(bp);
+        bp.connect(g);
+        g.connect(sum);
+      });
+      // Chest: keep some of the fundamental, which F1 alone would strip out.
+      const chest = ctx.createBiquadFilter();
+      chest.type = "lowpass";
+      chest.frequency.value = 350;
+      const chestGain = ctx.createGain();
+      chestGain.gain.value = 0.05;
+      head.connect(chest);
+      chest.connect(chestGain);
+      chestGain.connect(sum);
+      sum.connect(filter);
+    }
+
     const sources = [];
     const semis = (L.octave || 0) * 12 + (L.coarse || 0);
     const baseFreq = freq * Math.pow(2, semis / 12) * Math.pow(2, (L.fine || 0) / 1200);
@@ -262,7 +305,7 @@ class OmniWebEngine {
         const g = ctx.createGain();
         g.gain.value = 1 / unison;
         src.connect(g);
-        g.connect(filter);
+        g.connect(head);
         sources.push({ node: src, isOsc: false });
       } else if (L.wave.startsWith("sample:")) {
         const name = L.wave.slice(7);
@@ -276,7 +319,7 @@ class OmniWebEngine {
           const g = ctx.createGain();
           g.gain.value = 1 / unison;
           src.connect(g);
-          g.connect(filter);
+          g.connect(head);
           sources.push({ node: src, isOsc: false });
         }
       } else {
@@ -300,7 +343,7 @@ class OmniWebEngine {
         const g = ctx.createGain();
         g.gain.value = 1 / unison;
         osc.connect(g);
-        g.connect(filter);
+        g.connect(head);
         sources.push({ node: osc, isOsc: true });
       }
     }

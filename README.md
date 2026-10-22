@@ -41,7 +41,9 @@ Layer B ─┘
 ```
 
 Each layer is independent: up to 7 detuned unison oscillators → biquad filter
-(with its own ADSR and envelope amount) → amplitude ADSR → stereo pan. The LFO
+(with its own ADSR and envelope amount) → amplitude ADSR → stereo pan. An
+optional vowel stage (male-voice formants F1–F3 plus a chest band) sits in front
+of the filter; it's what makes the Choir patches sing. The LFO
 routes to pitch, filter cutoff, or amplitude.
 
 Voices are allocated per note with oldest-note stealing once the polyphony limit
@@ -76,6 +78,7 @@ programmatically.
       "unison": 3,            // 1..7
       "detune": 12,           // cents of unison spread
       "glide": 0,             // portamento seconds
+      "formant": { "vowel": "ah" }, // optional: ah|oh|oo|eh|ee — sung-vowel filter bank
       "ampEnv": { "a": 0.9, "d": 1.4, "s": 0.85, "r": 2.2 },
       "filter": {
         "type": "lowpass",    // lowpass|highpass|bandpass|notch
@@ -103,8 +106,9 @@ and **Save to Browser** to keep patches in `localStorage` between sessions.
 | Glass Keys | Keys |
 | Nebula Texture | Texture |
 | Pluck Arp | Pluck |
+| Cathedral Men | Choir |
 
-All six are produced by synthesis — there are no sample files in this repo.
+All seven are produced by synthesis — there are no sample files in this repo.
 
 ## Using your own samples
 

@@ -117,6 +117,25 @@ const FACTORY_PATCHES = [
         filter: { type: "lowpass", cutoff: 4000, q: 1, envAmt: 0, env: { a: 0.002, d: 0.28, s: 0, r: 0.2 } },
         lfo: { rate: 0, depth: 0, target: "pitch" } }
     ]
+  },
+  {
+    name: "Cathedral Men",
+    category: "Choir",
+    author: "OmniWeb",
+    master: { volume: 0.85, voices: 8 },
+    fx: { distortion: 0.0, chorus: 0.55, delay: { time: 0.48, fb: 0.2, mix: 0.08 }, reverb: { mix: 0.6, decay: 5.0 } },
+    layers: [
+      { enabled: true, level: 0.7, pan: -0.2, wave: "sawtooth", octave: -1, coarse: 0, fine: 0, unison: 6, detune: 14, glide: 0,
+        formant: { vowel: "ah" },
+        ampEnv: { a: 0.6, d: 1.0, s: 0.9, r: 1.8 },
+        filter: { type: "lowpass", cutoff: 3200, q: 0.7, envAmt: 0, env: { a: 0.6, d: 1.0, s: 1, r: 1.8 } },
+        lfo: { rate: 4.8, depth: 0.06, target: "pitch" } },
+      { enabled: true, level: 0.45, pan: 0.2, wave: "sawtooth", octave: -2, coarse: 0, fine: 3, unison: 4, detune: 10, glide: 0,
+        formant: { vowel: "oh" },
+        ampEnv: { a: 0.8, d: 1.2, s: 0.9, r: 2.0 },
+        filter: { type: "lowpass", cutoff: 1800, q: 0.7, envAmt: 0, env: { a: 0.8, d: 1.2, s: 1, r: 2.0 } },
+        lfo: { rate: 4.3, depth: 0.05, target: "pitch" } }
+    ]
   }
 ];
 
