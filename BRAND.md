@@ -1,51 +1,44 @@
 # ROBN Synth — brand notes
 
-Derived from the ROBN logo artwork in `2 R O B N  Holdings LTD/02_DESIGN/01_Brand`
-on the ROBN 3TB drive. There was no written guideline, so this records what the
-UI uses and why. Treat it as a working draft, not the official ROBN guide.
+**Source of truth:** `robn-theme.css`, copied unedited from the ROBN brand
+handoff (`~/Claude/Projects/ROBN Site/robn-handoff/`). Build against its
+tokens; never hardcode a hex that already exists as a token. To update the
+brand, replace that file with a newer handoff copy rather than editing it here.
 
-## Logo
+## How the synth maps to the tokens
 
-| Asset | Use |
+| Surface | Token |
 |---|---|
-| `assets/robn-wordmark.png` | Header wordmark. Cropped from *ROBN LOGO 2021*, 900px wide for 2x screens. |
-| `assets/robn-mark.png` | The heat-map R (*New R Logo (Final)*), transparent cut-out. Header mark at 56px, free-floating with a teal + ember drop-shadow that follows the letter. |
-| `assets/favicon.png` | 64px heat-map R on violet-black `#10001C`, so the dark-bodied letter reads in a browser tab. |
+| Page backdrop, scope background | `--void` |
+| Panels, header | `--ground` |
+| Inputs, list hover | `--raised` / `--raised-2` |
+| Borders / dividers, slider tracks | `--line` / `--line-soft` |
+| Layer A, active white keys, selected patch, primary actions | `--accent` (mint) + `--glow-mint` |
+| Layer B, active black keys, focus rings | `--accent-cyan` + `--glow-cyan` |
+| Panic | `--danger` |
+| Warning note (Omnisphere notice) | `--warning` |
+| Text | `--fg-1` primary, `--fg-2` secondary, `--fg-3` labels/meta |
 
-- Only ever put the logo on dark grounds (`#10001C` or darker). It's a neon glow
-  and goes muddy on light backgrounds.
-- The wordmark carries a grey halo in the source art; the CSS lifts it with
-  `brightness(1.45)` plus a teal drop-shadow. Don't recolour the letters.
-- Product name sits to the right of the wordmark in Cinzel, spaced caps, behind
-  a thin teal divider: **ROBN | SYNTH**.
-- Use the transparent heat-map R, not the boxed square version, so the mark
-  floats on the page rather than reading as a pasted-on tile.
-
-## Colour
-
-Sampled from the artwork, not picked by eye.
-
-| Token | Hex | From | Use |
-|---|---|---|---|
-| `--teal` | `#00F0D8` | wordmark glow | Primary accent, Layer A, active white keys |
-| `--ice` | `#78D8F0` | button ring | Secondary headings, product name, focus rings |
-| `--ember` | `#FF3B1F` | fire inside the R (lifted for legibility) | Accent, Layer B, Panic, active black keys |
-| `--ember-deep` | `#D40000` | fire inside the R | Ember fills |
-| `--bg` | `#10001C` | R background | Page ground |
-| `--glass` | `#243048` @ 38% | button glass | Panels |
-
-Teal is the default voice; ember is the spark. Keep ember to a few points per
-screen or it stops reading as an accent.
+Glow is reserved for active or interactive state: a slider you're touching, a
+pressed key, a focused control. Everything at rest is flat.
 
 ## Type
 
-- **Everything:** IBM Plex Mono (Google Fonts, SIL OFL), weights 400–700.
-  Headings in uppercase with 0.18–0.2em tracking; mono is already wide, so
-  keep tracking tighter than you would on a proportional face.
-- Fallbacks: `ui-monospace, "SF Mono", Menlo, monospace`.
+- **IBM Plex Mono** (`--font-mono`) for all UI chrome: panel headers, labels,
+  buttons, values, patch list.
+- **Cinzel** (`--font-display`) only for brand moments: the **SYNTH** product
+  label and the current patch title.
+- Cinzel stands in for ROBN's display face **Exodus**. The copy on the drive is
+  a *Personal Use* licence that forbids web embedding; a commercial licence is
+  at https://gumroad.com/l/exodus. Once licensed, swap `--font-display` in a
+  newer `robn-theme.css`.
 
-**Exodus licence:** the copy on the drive is the *Personal Use* licence
-(Andrew Herndon, 2015). It explicitly forbids including the font in a website
-without written permission, so it is **not** embedded here. A commercial licence
-is sold at https://gumroad.com/l/exodus. Once you have one, add the WOFF files
-and use it for the wordmark or display headings (`--display`).
+## Logos
+
+All from `robn-handoff/logos/`, cropped and resized for the web.
+
+| Asset | Source | Use |
+|---|---|---|
+| `assets/robn-r-chrome.png` | `robn-r-chrome.png` | App icon, 40px, header left |
+| `assets/robn-wordmark.png` | `robn-wordmark.png` | Header wordmark, 26px tall, mint drop-shadow per handoff |
+| `assets/favicon.png` | `robn-r-outline.png` | Favicon, on `--void` so it reads in light browser chrome |

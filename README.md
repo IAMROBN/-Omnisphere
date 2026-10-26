@@ -142,8 +142,9 @@ through the sample loader above.
 | `engine.js` | `OmniWebEngine` — voice allocation, layers, FX graph |
 | `patches.js` | `FACTORY_PATCHES` library |
 | `app.js` | UI binding, keyboard, arpeggiator, patch I/O |
-| `assets/` | ROBN logo and favicon |
-| `BRAND.md` | palette, type and logo usage |
+| `robn-theme.css` | ROBN brand tokens (unedited copy of the brand handoff) |
+| `assets/` | ROBN chrome R, wordmark and favicon |
+| `BRAND.md` | how the synth maps to the brand tokens |
 
 `window.omniweb` exposes `{ engine, press, release, selectPatch, patch }` for
 console tinkering.

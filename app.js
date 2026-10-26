@@ -408,7 +408,8 @@
     }
     const W = cv.width, H = cv.height;
     ctx2d.clearRect(0, 0, W, H);
-    ctx2d.fillStyle = "#08000e";
+    const tok = name => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+    ctx2d.fillStyle = tok("--void");
     ctx2d.fillRect(0, 0, W, H);
 
     if (engine.ready && engine.analyser) {
@@ -416,8 +417,8 @@
       const data = new Uint8Array(n);
       engine.analyser.getByteTimeDomainData(data);
       const grad = ctx2d.createLinearGradient(0, 0, W, 0);
-      grad.addColorStop(0, "#00f0d8");
-      grad.addColorStop(1, "#ff3b1f");
+      grad.addColorStop(0, tok("--accent"));
+      grad.addColorStop(1, tok("--accent-cyan"));
       ctx2d.strokeStyle = grad;
       ctx2d.lineWidth = 2 * dpr;
       ctx2d.beginPath();
