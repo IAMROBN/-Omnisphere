@@ -143,7 +143,7 @@ through the sample loader above.
 | `patches.js` | `FACTORY_PATCHES` library |
 | `app.js` | UI binding, keyboard, arpeggiator, patch I/O |
 | `robn-theme.css` | ROBN brand tokens (unedited copy of the brand handoff) |
-| `assets/` | ROBN chrome R, wordmark and favicon |
+| `assets/` | ROBN chrome R and favicon |
 | `BRAND.md` | how the synth maps to the brand tokens |
 
 `window.omniweb` exposes `{ engine, press, release, selectPatch, patch }` for

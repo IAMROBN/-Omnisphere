@@ -39,6 +39,5 @@ All from `robn-handoff/logos/`, cropped and resized for the web.
 
 | Asset | Source | Use |
 |---|---|---|
-| `assets/robn-r-chrome.png` | `robn-r-chrome.png` | App icon, 40px, header left |
-| `assets/robn-wordmark.png` | `robn-wordmark.png` | Header wordmark, 26px tall, mint drop-shadow per handoff |
+| `assets/robn-r-chrome.png` | `robn-r-chrome.png` | The only header mark, 44px, beside the SYNTH label. The wordmark is deliberately not used. |
 | `assets/favicon.png` | `robn-r-outline.png` | Favicon, on `--void` so it reads in light browser chrome |

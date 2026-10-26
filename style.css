@@ -32,12 +32,7 @@ header {
 }
 
 .brand { display: flex; align-items: center; gap: var(--sp-3); }
-.brand-mark { width: 40px; height: 40px; }
-.brand-wordmark {
-  height: 26px;
-  width: auto;
-  filter: drop-shadow(0 0 10px rgba(0, 255, 179, 0.35)); /* per handoff */
-}
+.brand-mark { width: 44px; height: 44px; }
 .brand-product {
   font-family: var(--font-display);
   font-weight: 600;
@@ -332,7 +327,6 @@ code { color: var(--accent-soft); font-family: var(--font-mono); }
 
 @media (max-width: 520px) {
   header { padding: 10px 14px; gap: 10px; }
-  .brand-wordmark { height: 22px; }
   .brand-product { font-size: 12px; letter-spacing: 0.2em; }
   .row > .meta { display: none; } /* computer-key hint: no keyboard on a phone */
 }
