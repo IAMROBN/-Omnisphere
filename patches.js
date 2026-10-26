@@ -1,5 +1,5 @@
 /*
- * OmniWeb factory patch library
+ * ROBN Synth factory patch library
  * -----------------------------
  * These are ORIGINAL, synthesis-based recreations of Omnisphere-style sound
  * categories. They are NOT Spectrasonics content and contain no proprietary
@@ -19,7 +19,7 @@ const FACTORY_PATCHES = [
   {
     name: "Halcyon Pad",
     category: "Pad",
-    author: "OmniWeb",
+    author: "ROBN",
     master: { volume: 0.8, voices: 10 },
     fx: { distortion: 0.0, chorus: 0.45, delay: { time: 0.42, fb: 0.32, mix: 0.22 }, reverb: { mix: 0.5, decay: 3.4 } },
     layers: [
@@ -36,7 +36,7 @@ const FACTORY_PATCHES = [
   {
     name: "Neon Bass",
     category: "Bass",
-    author: "OmniWeb",
+    author: "ROBN",
     master: { volume: 0.85, voices: 6 },
     fx: { distortion: 0.18, chorus: 0.1, delay: { time: 0.28, fb: 0.15, mix: 0.08 }, reverb: { mix: 0.12, decay: 1.4 } },
     layers: [
@@ -53,7 +53,7 @@ const FACTORY_PATCHES = [
   {
     name: "Starlight Lead",
     category: "Lead",
-    author: "OmniWeb",
+    author: "ROBN",
     master: { volume: 0.8, voices: 8 },
     fx: { distortion: 0.12, chorus: 0.3, delay: { time: 0.36, fb: 0.4, mix: 0.3 }, reverb: { mix: 0.35, decay: 2.4 } },
     layers: [
@@ -70,7 +70,7 @@ const FACTORY_PATCHES = [
   {
     name: "Glass Keys",
     category: "Keys",
-    author: "OmniWeb",
+    author: "ROBN",
     master: { volume: 0.8, voices: 12 },
     fx: { distortion: 0.0, chorus: 0.25, delay: { time: 0.3, fb: 0.25, mix: 0.18 }, reverb: { mix: 0.4, decay: 2.6 } },
     layers: [
@@ -87,7 +87,7 @@ const FACTORY_PATCHES = [
   {
     name: "Nebula Texture",
     category: "Texture",
-    author: "OmniWeb",
+    author: "ROBN",
     master: { volume: 0.75, voices: 8 },
     fx: { distortion: 0.05, chorus: 0.6, delay: { time: 0.55, fb: 0.5, mix: 0.35 }, reverb: { mix: 0.6, decay: 4.5 } },
     layers: [
@@ -104,7 +104,7 @@ const FACTORY_PATCHES = [
   {
     name: "Pluck Arp",
     category: "Pluck",
-    author: "OmniWeb",
+    author: "ROBN",
     master: { volume: 0.8, voices: 12 },
     fx: { distortion: 0.0, chorus: 0.15, delay: { time: 0.375, fb: 0.45, mix: 0.3 }, reverb: { mix: 0.3, decay: 2.0 } },
     layers: [
@@ -121,7 +121,7 @@ const FACTORY_PATCHES = [
   {
     name: "Cathedral Men",
     category: "Choir",
-    author: "OmniWeb",
+    author: "ROBN",
     master: { volume: 0.85, voices: 8 },
     fx: { distortion: 0.0, chorus: 0.55, delay: { time: 0.48, fb: 0.2, mix: 0.08 }, reverb: { mix: 0.6, decay: 5.0 } },
     layers: [

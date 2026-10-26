@@ -1,96 +1,146 @@
+/*
+ * ROBN Synth — brand theme
+ * Colours sampled from the ROBN logo artwork: neon teal wordmark glow,
+ * ice-cyan button ring, ember fire inside the R, violet-black ground.
+ * See BRAND.md for usage.
+ */
 :root {
-  --bg: #0b0d12;
-  --panel: #141822;
-  --panel-2: #1b2130;
-  --edge: #2a3244;
-  --text: #dfe6f2;
-  --muted: #8b97ad;
-  --accent: #58e0d0;
-  --accent-2: #c58cff;
-  --amber: #ffb84d;
-  --radius: 10px;
+  --bg: #10001c;            /* violet-black, R background */
+  --bg-2: #160628;
+  --glass: rgba(36, 48, 72, 0.38);   /* button glass slate */
+  --glass-2: rgba(48, 60, 84, 0.55);
+  --edge: rgba(0, 240, 216, 0.16);
+  --edge-strong: rgba(0, 240, 216, 0.42);
+  --text: #e6f7f5;
+  --muted: #8f8aa8;
+  --teal: #00f0d8;          /* primary: wordmark neon */
+  --ice: #78d8f0;           /* secondary: button ring */
+  --ember: #ff3b1f;         /* accent, legible on dark */
+  --ember-deep: #d40000;    /* accent fill, R fire */
+  --glow-teal: 0 0 6px rgba(0, 240, 216, 0.75), 0 0 18px rgba(0, 240, 216, 0.35);
+  --glow-ember: 0 0 6px rgba(255, 59, 31, 0.7), 0 0 18px rgba(212, 0, 0, 0.35);
+  --radius: 12px;
+  --display: "Cinzel", "Trajan Pro", Georgia, serif;
+  --ui: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
 }
 
 * { box-sizing: border-box; }
 
 body {
   margin: 0;
-  background: radial-gradient(1200px 700px at 50% -10%, #1a2236 0%, var(--bg) 60%);
-  color: var(--text);
-  font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
   min-height: 100vh;
+  color: var(--text);
+  font-family: var(--ui);
+  background:
+    radial-gradient(900px 520px at 50% -8%, rgba(0, 240, 216, 0.22), transparent 70%),
+    radial-gradient(700px 500px at 100% 100%, rgba(212, 0, 0, 0.12), transparent 70%),
+    var(--bg);
+  background-attachment: fixed;
 }
 
+/* ---------- header / brand ---------- */
 header {
   display: flex;
   align-items: center;
   gap: 18px;
-  padding: 14px 22px;
+  padding: 12px 22px;
   border-bottom: 1px solid var(--edge);
-  background: linear-gradient(180deg, #171d2b, #10141d);
+  background: linear-gradient(180deg, rgba(22, 6, 40, 0.92), rgba(16, 0, 28, 0.75));
+  backdrop-filter: blur(8px);
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
-.logo {
-  font-size: 20px;
-  font-weight: 700;
-  letter-spacing: 3px;
-  background: linear-gradient(90deg, var(--accent), var(--accent-2));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+.brand { display: flex; align-items: center; gap: 12px; }
+.brand-mark { width: 44px; height: 44px; filter: drop-shadow(0 0 8px rgba(0, 240, 216, 0.5)); }
+.brand-wordmark {
+  height: 40px;
+  width: auto;
+  /* the artwork carries a grey halo; lift it so the neon reads on violet-black */
+  filter: brightness(1.45) saturate(1.2) drop-shadow(0 0 6px rgba(0, 240, 216, 0.45));
+}
+.brand-product {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 15px;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--ice);
+  padding-left: 12px;
+  border-left: 1px solid var(--edge-strong);
+  text-shadow: 0 0 10px rgba(120, 216, 240, 0.45);
 }
 
-.tagline { color: var(--muted); font-size: 12px; }
-
+.tagline { color: var(--muted); font-size: 12px; letter-spacing: 0.04em; }
 .spacer { flex: 1; }
 
+/* ---------- layout ---------- */
 .wrap {
   display: grid;
-  grid-template-columns: 250px 1fr;
+  grid-template-columns: 260px 1fr;
   gap: 16px;
-  padding: 16px;
+  padding: 18px;
   max-width: 1500px;
   margin: 0 auto;
 }
 
 .panel {
-  background: var(--panel);
+  background: var(--glass);
   border: 1px solid var(--edge);
   border-radius: var(--radius);
-  padding: 14px;
+  padding: 16px;
+  backdrop-filter: blur(10px);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04), 0 10px 30px rgba(0, 0, 0, 0.35);
 }
 
 .panel h2 {
-  margin: 0 0 10px;
-  font-size: 11px;
-  letter-spacing: 1.6px;
+  margin: 0 0 12px;
+  font-family: var(--display);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.32em;
   text-transform: uppercase;
-  color: var(--muted);
-  font-weight: 600;
+  color: var(--teal);
+  text-shadow: 0 0 10px rgba(0, 240, 216, 0.35);
+}
+
+#patchName {
+  font-family: var(--display);
+  letter-spacing: 0.12em;
+  text-shadow: 0 0 14px rgba(0, 240, 216, 0.3);
 }
 
 /* ---------- patch browser ---------- */
-#patchList { list-style: none; margin: 0; padding: 0; max-height: 340px; overflow-y: auto; }
+#patchList { list-style: none; margin: 0; padding: 0; max-height: 360px; overflow-y: auto; }
 
 #patchList li {
   padding: 8px 10px;
-  border-radius: 7px;
+  border-radius: 8px;
   cursor: pointer;
   font-size: 13px;
   border: 1px solid transparent;
   margin-bottom: 3px;
+  transition: background 0.15s, border-color 0.15s;
 }
 
-#patchList li:hover { background: var(--panel-2); }
+#patchList li:hover { background: var(--glass-2); }
 
 #patchList li.active {
-  background: linear-gradient(90deg, rgba(88,224,208,.16), transparent);
-  border-color: var(--accent);
+  background: linear-gradient(90deg, rgba(0, 240, 216, 0.16), transparent);
+  border-color: var(--edge-strong);
+  box-shadow: inset 2px 0 0 var(--teal);
 }
 
-#patchList .cat { display: block; font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+#patchList .cat {
+  display: block;
+  font-size: 10px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+}
 
-/* ---------- controls ---------- */
+/* ---------- layers ---------- */
 .layers { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 
 .layer-head {
@@ -102,8 +152,15 @@ header {
   border-bottom: 1px solid var(--edge);
 }
 
-.layer-title { font-weight: 700; letter-spacing: 2px; font-size: 13px; color: var(--accent); }
-.layer-b .layer-title { color: var(--accent-2); }
+.layer-title {
+  font-family: var(--display);
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  font-size: 13px;
+  color: var(--teal);
+  text-shadow: var(--glow-teal);
+}
+.layer-b .layer-title { color: var(--ember); text-shadow: var(--glow-ember); }
 
 .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(96px, 1fr)); gap: 10px 12px; }
 
@@ -112,7 +169,7 @@ header {
 .ctl label {
   font-size: 10px;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 0.12em;
   color: var(--muted);
   display: flex;
   justify-content: space-between;
@@ -120,13 +177,14 @@ header {
 
 .ctl .val { color: var(--text); font-variant-numeric: tabular-nums; }
 
+/* ---------- sliders ---------- */
 input[type=range] {
   -webkit-appearance: none;
   appearance: none;
   width: 100%;
-  height: 4px;
+  height: 3px;
   border-radius: 3px;
-  background: var(--panel-2);
+  background: rgba(143, 138, 168, 0.28);
   outline: none;
 }
 
@@ -136,53 +194,72 @@ input[type=range]::-webkit-slider-thumb {
   width: 13px;
   height: 13px;
   border-radius: 50%;
-  background: var(--accent);
+  background: var(--teal);
   cursor: pointer;
-  border: 2px solid #0b0d12;
+  border: 2px solid var(--bg);
+  box-shadow: var(--glow-teal);
 }
 
 input[type=range]::-moz-range-thumb {
   width: 13px; height: 13px; border-radius: 50%;
-  background: var(--accent); cursor: pointer; border: 2px solid #0b0d12;
+  background: var(--teal); cursor: pointer; border: 2px solid var(--bg);
+  box-shadow: var(--glow-teal);
 }
 
-.layer-b input[type=range]::-webkit-slider-thumb { background: var(--accent-2); }
-.layer-b input[type=range]::-moz-range-thumb { background: var(--accent-2); }
+.layer-b input[type=range]::-webkit-slider-thumb { background: var(--ember); box-shadow: var(--glow-ember); }
+.layer-b input[type=range]::-moz-range-thumb { background: var(--ember); box-shadow: var(--glow-ember); }
 
+input[type=range]:focus-visible::-webkit-slider-thumb { outline: 2px solid var(--ice); outline-offset: 2px; }
+
+/* ---------- inputs & buttons ---------- */
 select, button, input[type=text] {
-  background: var(--panel-2);
+  background: var(--glass-2);
   color: var(--text);
   border: 1px solid var(--edge);
-  border-radius: 6px;
-  padding: 6px 8px;
+  border-radius: 7px;
+  padding: 6px 9px;
   font-size: 12px;
   font-family: inherit;
 }
 
-button { cursor: pointer; }
-button:hover { border-color: var(--accent); }
+button { cursor: pointer; transition: border-color 0.15s, box-shadow 0.15s; }
+button:hover, select:hover { border-color: var(--edge-strong); box-shadow: 0 0 10px rgba(0, 240, 216, 0.18); }
+button:focus-visible, select:focus-visible { outline: 2px solid var(--ice); outline-offset: 2px; }
 
 button.primary {
-  background: linear-gradient(90deg, var(--accent), #3fb8ad);
-  color: #06231f;
-  font-weight: 700;
+  background: var(--teal);
+  color: var(--bg);
+  font-weight: 600;
   border: none;
+  box-shadow: var(--glow-teal);
 }
+
+#panicBtn {
+  color: var(--ember);
+  border-color: rgba(255, 59, 31, 0.45);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+#panicBtn:hover { box-shadow: var(--glow-ember); border-color: var(--ember); }
 
 .row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
 .row > * { flex: 0 0 auto; }
+.row > .meta { flex: 1 1 220px; min-width: 0; }
 
 .section-title {
+  font-family: var(--display);
   font-size: 10px;
-  letter-spacing: 1.4px;
+  letter-spacing: 0.26em;
   text-transform: uppercase;
-  color: var(--muted);
+  color: var(--ice);
   margin: 14px 0 8px;
   border-top: 1px solid var(--edge);
   padding-top: 10px;
 }
 
 .toggle { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--muted); }
+input[type=checkbox] { accent-color: var(--teal); }
 
 /* ---------- keyboard ---------- */
 #keyboard {
@@ -196,49 +273,92 @@ button.primary {
 .key {
   position: absolute;
   bottom: 0;
-  border-radius: 0 0 5px 5px;
+  border-radius: 0 0 6px 6px;
   cursor: pointer;
   display: flex;
   align-items: flex-end;
   justify-content: center;
   padding-bottom: 6px;
   font-size: 9px;
+  transition: background 0.06s, box-shadow 0.06s;
 }
 
 .key.white {
-  background: linear-gradient(180deg, #eef2f8, #c3ccdb);
-  border: 1px solid #93a0b5;
+  background: linear-gradient(180deg, #eef8f7, #b9c6d4);
+  border: 1px solid #5e6b80;
   height: 130px;
-  color: #5b6779;
+  color: #4d5a6e;
   z-index: 1;
 }
 
 .key.black {
-  background: linear-gradient(180deg, #2b3444, #10141d);
+  background: linear-gradient(180deg, #2a1c40, #0c0016);
   border: 1px solid #000;
   height: 82px;
-  color: #7b8a9e;
+  color: var(--muted);
   z-index: 2;
 }
 
-.key.active.white { background: linear-gradient(180deg, var(--accent), #3aa79b); }
-.key.active.black { background: linear-gradient(180deg, var(--accent-2), #7a4fb0); }
+.key.active.white {
+  background: linear-gradient(180deg, var(--teal), #00a896);
+  box-shadow: 0 0 18px rgba(0, 240, 216, 0.6);
+  color: var(--bg);
+}
+.key.active.black {
+  background: linear-gradient(180deg, var(--ember), var(--ember-deep));
+  box-shadow: 0 0 18px rgba(255, 59, 31, 0.6);
+}
 
-#scope { width: 100%; height: 90px; display: block; background: #0a0d14; border-radius: 8px; border: 1px solid var(--edge); }
+#scope {
+  width: 100%;
+  height: 90px;
+  display: block;
+  background: rgba(8, 0, 14, 0.7);
+  border-radius: 9px;
+  border: 1px solid var(--edge);
+}
 
+/* ---------- misc ---------- */
 .meta { font-size: 11px; color: var(--muted); line-height: 1.7; }
+.meta strong { color: var(--text); }
+
 .pill {
-  display: inline-block; padding: 2px 8px; border-radius: 999px;
-  background: var(--panel-2); border: 1px solid var(--edge); font-size: 10px;
-  letter-spacing: 1px; text-transform: uppercase;
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: var(--glass-2);
+  border: 1px solid var(--edge);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ice);
 }
 
 .notice {
-  font-size: 11px; color: var(--muted); line-height: 1.6;
-  border-left: 2px solid var(--amber); padding-left: 10px; margin-top: 10px;
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.6;
+  border-left: 2px solid var(--ember);
+  padding-left: 10px;
+  margin-top: 10px;
 }
 
+code { color: var(--ice); }
+
 @media (max-width: 940px) {
-  .wrap { grid-template-columns: 1fr; }
+  .wrap { grid-template-columns: 1fr; padding: 12px; }
   .layers { grid-template-columns: 1fr; }
+  .tagline { display: none; }
+}
+
+@media (max-width: 520px) {
+  header { padding: 10px 14px; gap: 10px; }
+  .brand-mark { display: none; }
+  .brand-wordmark { height: 30px; }
+  .brand-product { font-size: 12px; letter-spacing: 0.3em; }
+  .row > .meta { display: none; } /* computer-key hint: no keyboard on a phone */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
 }

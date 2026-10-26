@@ -1,9 +1,9 @@
-# OmniWeb
+# ROBN Synth
 
 A dual-layer subtractive/wavetable synthesizer that runs in the browser on the
 Web Audio API. No build step, no dependencies — open `index.html` and play.
 
-OmniWeb is an **original** instrument inspired by the architecture of large
+ROBN Synth is an **original** instrument inspired by the architecture of large
 workstation synths (dual layers, per-layer filter and envelopes, an LFO, and a
 shared effects bus). It ships with its own factory patches and an open,
 human-readable patch format.
@@ -58,7 +58,7 @@ programmatically.
 {
   "name": "Halcyon Pad",
   "category": "Pad",
-  "author": "OmniWeb",
+  "author": "ROBN",
   "master": { "volume": 0.8, "voices": 10 },
   "fx": {
     "distortion": 0.0,
@@ -119,7 +119,7 @@ the session only and are never uploaded anywhere.
 
 ## On Omnisphere patches
 
-OmniWeb **cannot** load Spectrasonics Omnisphere `.prt_omn` patches, and this is
+ROBN Synth **cannot** load Spectrasonics Omnisphere `.prt_omn` patches, and this is
 a hard limitation rather than a missing feature.
 
 An Omnisphere patch file is not a sound. It is a small set of parameters that
@@ -142,6 +142,8 @@ through the sample loader above.
 | `engine.js` | `OmniWebEngine` — voice allocation, layers, FX graph |
 | `patches.js` | `FACTORY_PATCHES` library |
 | `app.js` | UI binding, keyboard, arpeggiator, patch I/O |
+| `assets/` | ROBN logo and favicon |
+| `BRAND.md` | palette, type and logo usage |
 
 `window.omniweb` exposes `{ engine, press, release, selectPatch, patch }` for
 console tinkering.
