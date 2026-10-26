@@ -9,8 +9,8 @@ UI uses and why. Treat it as a working draft, not the official ROBN guide.
 | Asset | Use |
 |---|---|
 | `assets/robn-wordmark.png` | Header wordmark. Cropped from *ROBN LOGO 2021*, 900px wide for 2x screens. |
-| `assets/robn-mark.png` | The fire R (*Biig Square R Logo*, 2024), cropped tight. Header badge, rounded 10px with a teal/ember glow. |
-| `assets/favicon.png` | 64px fire R, cropped tighter so it reads at tab size. |
+| `assets/robn-mark.png` | The heat-map R (*New R Logo (Final)*), transparent cut-out. Header mark at 56px, free-floating with a teal + ember drop-shadow that follows the letter. |
+| `assets/favicon.png` | 64px heat-map R on violet-black `#10001C`, so the dark-bodied letter reads in a browser tab. |
 
 - Only ever put the logo on dark grounds (`#10001C` or darker). It's a neon glow
   and goes muddy on light backgrounds.
@@ -18,8 +18,8 @@ UI uses and why. Treat it as a working draft, not the official ROBN guide.
   `brightness(1.45)` plus a teal drop-shadow. Don't recolour the letters.
 - Product name sits to the right of the wordmark in Cinzel, spaced caps, behind
   a thin teal divider: **ROBN | SYNTH**.
-- The fire R ships on its own violet-black square (`#11021F`), which matches
-  the page ground, so it sits as an app-icon badge without a cut-out.
+- Use the transparent heat-map R, not the boxed square version, so the mark
+  floats on the page rather than reading as a pasted-on tile.
 
 ## Colour
 
