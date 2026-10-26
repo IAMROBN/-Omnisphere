@@ -9,8 +9,8 @@ UI uses and why. Treat it as a working draft, not the official ROBN guide.
 | Asset | Use |
 |---|---|
 | `assets/robn-wordmark.png` | Header wordmark. Cropped from *ROBN LOGO 2021*, 900px wide for 2x screens. |
-| `assets/robn-mark.png` | The neon R button. Header badge. |
-| `assets/favicon.png` | 64px R button. |
+| `assets/robn-mark.png` | The fire R (*Biig Square R Logo*, 2024), cropped tight. Header badge, rounded 10px with a teal/ember glow. |
+| `assets/favicon.png` | 64px fire R, cropped tighter so it reads at tab size. |
 
 - Only ever put the logo on dark grounds (`#10001C` or darker). It's a neon glow
   and goes muddy on light backgrounds.
@@ -18,6 +18,8 @@ UI uses and why. Treat it as a working draft, not the official ROBN guide.
   `brightness(1.45)` plus a teal drop-shadow. Don't recolour the letters.
 - Product name sits to the right of the wordmark in Cinzel, spaced caps, behind
   a thin teal divider: **ROBN | SYNTH**.
+- The fire R ships on its own violet-black square (`#11021F`), which matches
+  the page ground, so it sits as an app-icon badge without a cut-out.
 
 ## Colour
 
@@ -37,12 +39,13 @@ screen or it stops reading as an accent.
 
 ## Type
 
-- **Display:** Cinzel (Google Fonts, SIL OFL), uppercase, wide tracking.
-  It stands in for Exodus, the wordmark face.
-- **UI:** Inter (Google Fonts, SIL OFL).
+- **Everything:** IBM Plex Mono (Google Fonts, SIL OFL), weights 400–700.
+  Headings in uppercase with 0.18–0.2em tracking; mono is already wide, so
+  keep tracking tighter than you would on a proportional face.
+- Fallbacks: `ui-monospace, "SF Mono", Menlo, monospace`.
 
 **Exodus licence:** the copy on the drive is the *Personal Use* licence
 (Andrew Herndon, 2015). It explicitly forbids including the font in a website
 without written permission, so it is **not** embedded here. A commercial licence
 is sold at https://gumroad.com/l/exodus. Once you have one, add the WOFF files
-and swap `--display` to Exodus.
+and use it for the wordmark or display headings (`--display`).

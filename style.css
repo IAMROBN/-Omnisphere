@@ -20,8 +20,8 @@
   --glow-teal: 0 0 6px rgba(0, 240, 216, 0.75), 0 0 18px rgba(0, 240, 216, 0.35);
   --glow-ember: 0 0 6px rgba(255, 59, 31, 0.7), 0 0 18px rgba(212, 0, 0, 0.35);
   --radius: 12px;
-  --display: "Cinzel", "Trajan Pro", Georgia, serif;
-  --ui: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --display: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --ui: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
 }
 
 * { box-sizing: border-box; }
@@ -53,7 +53,13 @@ header {
 }
 
 .brand { display: flex; align-items: center; gap: 12px; }
-.brand-mark { width: 44px; height: 44px; filter: drop-shadow(0 0 8px rgba(0, 240, 216, 0.5)); }
+.brand-mark {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  border: 1px solid var(--edge-strong);
+  box-shadow: 0 0 12px rgba(0, 240, 216, 0.35), 0 0 22px rgba(212, 0, 0, 0.25);
+}
 .brand-wordmark {
   height: 40px;
   width: auto;
@@ -64,7 +70,7 @@ header {
   font-family: var(--display);
   font-weight: 500;
   font-size: 15px;
-  letter-spacing: 0.42em;
+  letter-spacing: 0.3em;
   text-transform: uppercase;
   color: var(--ice);
   padding-left: 12px;
@@ -99,7 +105,7 @@ header {
   font-family: var(--display);
   font-size: 12px;
   font-weight: 700;
-  letter-spacing: 0.32em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--teal);
   text-shadow: 0 0 10px rgba(0, 240, 216, 0.35);
@@ -107,7 +113,7 @@ header {
 
 #patchName {
   font-family: var(--display);
-  letter-spacing: 0.12em;
+  letter-spacing: 0.04em;
   text-shadow: 0 0 14px rgba(0, 240, 216, 0.3);
 }
 
@@ -155,7 +161,7 @@ header {
 .layer-title {
   font-family: var(--display);
   font-weight: 700;
-  letter-spacing: 0.3em;
+  letter-spacing: 0.2em;
   font-size: 13px;
   color: var(--teal);
   text-shadow: var(--glow-teal);
@@ -169,7 +175,7 @@ header {
 .ctl label {
   font-size: 10px;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.06em;
   color: var(--muted);
   display: flex;
   justify-content: space-between;
@@ -250,7 +256,7 @@ button.primary {
 .section-title {
   font-family: var(--display);
   font-size: 10px;
-  letter-spacing: 0.26em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--ice);
   margin: 14px 0 8px;
